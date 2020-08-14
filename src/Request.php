@@ -128,6 +128,7 @@ class Request {
         $ret = [];
 
         $items = Arr::path ($result, 'albums.items');
+        $total = (int)Arr::path ($result, 'albums.total');
 
         if ( ! $items) {
             $items = [$result];
@@ -155,6 +156,10 @@ class Request {
             $ret = array_shift ($ret);
         }
 
+        if ($total === 0) {
+            $ret = false;
+        }
+
         $result = $ret;
     }
 
@@ -167,6 +172,7 @@ class Request {
         $ret = [];
 
         $items = Arr::path ($result, 'artists.items');
+        $total = (int)Arr::path ($result, 'artists.total');
 
         if ($items) {
             foreach ($items as $item) {
@@ -185,6 +191,10 @@ class Request {
         if (count ($ret) === 1) {
             $ret = array_shift ($ret);
         }
+
+        if ($total === 0) {
+            $ret = false;
+        }        
 
         $result = $ret;
     }
