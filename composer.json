@@ -3,7 +3,7 @@
     "description": "Spotify API Wrapper with Client Credentials Flow implementation",
     "type": "library",
     "keywords": [
-        "spotify",
+        "spotify"
     ],
     "homepage": "https://github.com/a-pp-zz/spotify",
     "license": "MIT",
@@ -17,7 +17,7 @@
     "require": {
         "php": ">=5.4",
         "appzz/arr": "1.*",
-        "appzz/curl-client": "2.*",
+        "appzz/curl-client": "3.*"
     },
     "autoload": {
         "psr-4": {"AppZz\\Http\\Spotify\\": "src/"}
