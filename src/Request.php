@@ -137,6 +137,7 @@ class Request {
 
         if ( ! $items) {
             $items = [$result];
+            $total = 1;
         }
 
         if ($items) {
