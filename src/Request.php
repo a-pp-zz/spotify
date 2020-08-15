@@ -104,8 +104,13 @@ class Request {
      */
     public function album ($album_id = '')
     {
-        if (preg_match ('#album\/([a-z0-9]+)\/?#iu', $album_id, $parts)) {
-            $album_id = $parts[1];
+        if (preg_match('#^http#iu', $album_id)) {
+            $album_id = parse_url ($album_id, PHP_URL_PATH);
+            $album_id = trim ($album_id, '/');
+
+            if (preg_match ('#album\/([a-z0-9]+)\/?#iu', $album_id, $parts)) {
+                $album_id = $parts[1];
+            }
         }
 
         $url = sprintf (Request::ALBUMS_URL, $album_id);
@@ -194,7 +199,7 @@ class Request {
 
         if ($total === 0) {
             $ret = false;
-        }        
+        }
 
         $result = $ret;
     }
